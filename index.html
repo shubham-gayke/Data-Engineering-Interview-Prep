@@ -696,12 +696,62 @@ body::before {
 
 /* ========== PRINT ========== */
 @media print {
-  .sidebar, .mobile-toggle, .controls-bar, .prepare-btn { display: none !important; }
-  .main { margin-left: 0; padding: 20px; }
-  .q-body { max-height: none !important; }
-  .q-card, .scenario-card, .top-card, .flag-card { break-inside: avoid; }
-  body { background: #fff; color: #111; }
-  .hero { background: #f0f0ff; }
+  @page { margin: 1.5cm; }
+  .sidebar, .mobile-toggle, .controls-bar, .prepare-btn, .sidebar-overlay { display: none !important; }
+  .app { display: block !important; }
+  .main { margin-left: 0 !important; padding: 0 !important; max-width: 100% !important; }
+  
+  body, html { 
+    background: #ffffff !important; 
+    color: #111111 !important; 
+    font-size: 11pt !important;
+  }
+  
+  body::before { display: none !important; }
+  
+  .hero { 
+    background: transparent !important; 
+    border: none !important; 
+    border-bottom: 2px solid #ccc !important;
+    padding: 0 0 20px 0 !important;
+    margin-bottom: 30px !important;
+  }
+  .hero h1 { color: #000 !important; background: none !important; -webkit-text-fill-color: #000 !important; }
+  
+  .q-card, .scenario-card, .top-card, .flag-card { 
+    background: #ffffff !important;
+    border: 1px solid #dddddd !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 20px !important;
+    border-radius: 8px !important;
+  }
+  
+  .q-body, .scenario-body { 
+    max-height: none !important; 
+    overflow: visible !important; 
+    display: block !important;
+  }
+  .q-body-inner { border-top: 1px solid #eee !important; padding: 15px !important; }
+  
+  .badge {
+    background: transparent !important;
+    border: 1px solid #bbb !important;
+    color: #333 !important;
+  }
+  
+  .q-title, .scenario-title, h1, h2, h3, h4 { 
+    color: #000 !important; 
+    page-break-after: avoid; 
+  }
+  
+  .q-section-title, .star-label { color: #555 !important; }
+  .fit-table th { background: #f5f5f5 !important; color: #000 !important; }
+  .fit-table td { border-color: #eee !important; color: #111 !important; }
+  
+  /* Ensure backgrounds print correctly */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
 
 /* ========== STAR FORMAT ========== */
